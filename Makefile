@@ -1,4 +1,4 @@
-build: build-html build-js
+build: build-js build-html
 
 build-html:
 	cp -r src/viewer/*.html dist/viewer/
