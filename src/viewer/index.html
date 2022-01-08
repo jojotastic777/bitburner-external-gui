@@ -28,6 +28,14 @@
             --purple: #a7f;
             --pink: #f7a;
 
+            --bg: #333;
+            --bg-dim: #222;
+            --bg-bright: #444;
+
+            --fg: #ddd;
+            --fg-dim: #aaa;
+            --fg-bright: #fff;
+
             --hp-color: var(--red);
             --money-color: var(--green);
             --hack-color: var(--yellow);
@@ -41,8 +49,8 @@
 
             font-family: "Roboto", sans-serif;
 
-            background-color: #222;
-            color: #ddd;
+            background-color: var(--bg-dim);
+            color: var(--fg);
         }
 
         hr {
@@ -50,50 +58,110 @@
 
             border-bottom-style: solid;
             border-width: 1px;
-            border-color: #fff;
+            border-color: var(--bg-bright);
         }
 
-        .hp {
-            color: var(--hp-color);
+        .red {
+            color: var(--red)
         }
 
-        .progress-bar-fill.hp {
-            background-color: var(--hp-color);
+        .progress-bar-fill.red {
+            background-color: var(--red);
         }
 
-        .money {
-            color: var(--money-color);
+        .green {
+            color: var(--green);
         }
 
-        .hack {
-            color: var(--hack-color);
+        .progress-bar-fill.green {
+            background-color: var(--green);
         }
 
-        .progress-bar-fill.hack {
-            background-color: var(--hack-color);
+        .blue {
+            color: var(--blue)
         }
 
-        .phys-stat {
-            color: var(--phys-stat-color);
+        .progress-bar-fill.blue {
+            background-color: var(--blue);
         }
 
-        .progress-bar-fill.phys-stat {
-            background-color: var(--phys-stat-color);
+        .yellow {
+            color: var(--yellow);
         }
 
-        .cha {
-            color: var(--cha-color);
+        .progress-bar-fill.yellow {
+            background-color: var(--yellow);
         }
 
-        .progress-bar-fill.cha {
-            background-color: var(--cha-color);
+        .cyan {
+            color: var(--cyan);
+        }
+
+        .progress-bar.cyan {
+            background-color: var(--cyan);
+        }
+
+        .magenta {
+            color: var(--magenta);
+        }
+
+        .progress-bar-fill.magenta {
+            background-color: var(--magenta);
+        }
+
+        .orange {
+            color: var(--orange);
+        }
+
+        .progress-bar-fill.orange {
+            background-color: var(--orange);
+        }
+
+        .lime {
+            color: var(--lime);
+        }
+
+        .progress-bar-fill.lime {
+            background-color: var(--lime);
+        }
+
+        .teal {
+            color: var(--teal);
+        }
+
+        .progress-bar-fill.teal {
+            background-color: var(--teal);
+        }
+
+        .skyblue {
+            color: var(--skyblue);
+        }
+
+        .progress-bar-fill.skyblue {
+            background-color: var(--skyblue);
+        }
+
+        .purple {
+            color: var(--purple);
+        }
+
+        .progress-bar-fill.purple {
+            background-color: var(--purple);
+        }
+
+        .pink {
+            color: var(--pink);
+        }
+
+        .progress-bar-fill.pink {
+            background-color: var(--pink);
         }
 
         .indicator-list {
-            width: 15em;
+            width: 20em;
             padding: 0.5em;
 
-            background-color: #333;
+            background-color: var(--bg);
             
         }
 
@@ -104,14 +172,16 @@
 
             border-bottom-style: solid;
             border-width: 1px;
-            border-color: #fff;
+            border-color: var(--fg-dim);
 
             margin-bottom: 0.25em;
+
+            color: var(--fg-bright)
         }
 
         .indicator {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: auto auto;
             grid-template-rows: 1fr;
             gap: 0.25em;
 
@@ -141,77 +211,91 @@
         .progress-bar {
             grid-column: 1 / span 2;
 
-            background-color: #222;
+            background-color: var(--bg-dim);
 
             height: 100%;
         }
 
         .progress-bar-fill {
-            width: 0%;
+            width: 50%;
             height: 100%;
 
-            background-color: #555;
+            background-color: var(--fg-dim);
 
-            transition: width 100ms;
+            transition: width 250ms;
         }
     </style>
 </head>
 <body>
     <div class="indicator-list">
         <div class="indicator-list-title">Character</div>
-        <div class="indicator indicator-tall hp">
+        <div class="indicator indicator-tall red">
             <div class="indicator-label">HP:</div>
             <div class="indicator-value" id="player-hp-value">??/??</div>
-            <div class="progress-bar"><div id="player-hp-progress" class="progress-bar-fill hp"></div></div>
+            <div class="progress-bar"><div id="player-hp-progress" class="progress-bar-fill red"></div></div>
         </div>
-        <div class="indicator money">
+        <div class="indicator green">
             <div class="indicator-label">Money:</div>
             <div class="indicator-value" id="curr-money-value">$??.??</div>
         </div>
-        <div class="indicator indicator-tall hack">
+        <div class="indicator indicator-tall yellow">
             <div class="indicator-label">Hack:</div>
             <div class="indicator-value" id="player-hack-value">??</div>
-            <div class="progress-bar"><div id="player-hack-progress" class="progress-bar-fill hack"></div></div>
+            <div class="progress-bar"><div id="player-hack-progress" class="progress-bar-fill yellow"></div></div>
         </div>
         <hr />
-        <div class="indicator indicator-tall phys-stat">
+        <div class="indicator indicator-tall purple">
             <div class="indicator-label">Strength:</div>
             <div class="indicator-value" id="player-strength-value">??</div>
-            <div class="progress-bar"><div id="player-strength-progress" class="progress-bar-fill phys-stat"></div></div>
+            <div class="progress-bar"><div id="player-strength-progress" class="progress-bar-fill purple"></div></div>
         </div>
-        <div class="indicator indicator-tall phys-stat">
+        <div class="indicator indicator-tall purple">
             <div class="indicator-label">Defence:</div>
             <div class="indicator-value" id="player-defence-value">??</div>
-            <div class="progress-bar"><div id="player-defence-progress" class="progress-bar-fill phys-stat"></div></div>
+            <div class="progress-bar"><div id="player-defence-progress" class="progress-bar-fill purple"></div></div>
         </div>
-        <div class="indicator indicator-tall phys-stat">
+        <div class="indicator indicator-tall purple">
             <div class="indicator-label">Dexterity:</div>
             <div class="indicator-value" id="player-dexterity-value">??</div>
-            <div class="progress-bar"><div id="player-dexterity-progress" class="progress-bar-fill phys-stat"></div></div>
+            <div class="progress-bar"><div id="player-dexterity-progress" class="progress-bar-fill purple"></div></div>
         </div>
-        <div class="indicator indicator-tall phys-stat">
+        <div class="indicator indicator-tall purple">
             <div class="indicator-label">Agility:</div>
             <div class="indicator-value" id="player-agility-value">??</div>
-            <div class="progress-bar"><div id="player-agility-progress" class="progress-bar-fill phys-stat"></div></div>
+            <div class="progress-bar"><div id="player-agility-progress" class="progress-bar-fill purple"></div></div>
         </div>
-        <div class="indicator indicator-tall cha">
+        <div class="indicator indicator-tall pink">
             <div class="indicator-label">Charisma:</div>
             <div class="indicator-value" id="player-charisma-value">??</div>
-            <div class="progress-bar"><div id="player-charisma-progress" class="progress-bar-fill cha"></div></div>
+            <div class="progress-bar"><div id="player-charisma-progress" class="progress-bar-fill pink"></div></div>
         </div>
     </div>
 
     <div class="indicator-list">
         <div class="indicator-list-title">System</div>
-        <div class="indicator indicator-tall">
+        <div class="indicator indicator-tall teal">
             <div class="indicator-label">Local RAM:</div>
-            <div class="indicator-value">??GB/??GB</div>
-            <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+            <div class="indicator-value" id="local-ram-value">??GB/??GB</div>
+            <div class="progress-bar"><div id="local-ram-progress" class="progress-bar-fill teal"></div></div>
         </div>
-        <div class="indicator indicator-tall">
-            <div class="indicator-label">Local RAM:</div>
-            <div class="indicator-value">??GB/??GB</div>
-            <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+        <div class="indicator teal">
+            <div class="indicator-label">Available:</div>
+            <div class="indicator-value" id="local-ram-avail-value">??GB</div>
+        </div>
+        <hr />
+        <div class="indicator indicator-tall teal">
+            <div class="indicator-label">Network RAM:</div>
+            <div class="indicator-value" id="net-ram-value">??GB/??GB</div>
+            <div class="progress-bar"><div id="net-ram-progress" class="progress-bar-fill teal"></div></div>
+        </div>
+        <div class="indicator teal">
+            <div class="indicator-label">Available:</div>
+            <div class="indicator-value" id="net-ram-avail-value">??GB</div>
+        </div>
+        <hr />
+        <div class="indicator skyblue">
+            <div class="indicator-label">Scripts Running:</div>
+            <div class="indicator-value" id="running-scripts-count-value">??</div>
         </div>
     </div>
 </body>

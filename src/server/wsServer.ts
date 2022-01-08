@@ -1,5 +1,4 @@
 import http from "http"
-import url from "url"
 import WebSocket, { WebSocketServer } from "ws"
 import GameMessage from "/common/GameMessage.js"
 
